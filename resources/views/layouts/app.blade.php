@@ -20,23 +20,36 @@
     </head>
 
     <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
-            
-            @livewire('navigation-dropdown')
+        <div class="min-h-screen">
 
-            <!-- Page Heading -->
-            <section class="px-8">
-                <header class="bg-white shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
-                    </div>
-                </header>
-            </section>
+            @livewire('navigation-dropdown')
 
             <!-- Page Content -->
             <section class="px-8">
+
                 <main>
-                    {{ $slot }}
+
+                    <div class="py-12">
+
+                        <div class="lg:flex lg:justify-between">
+
+                            <div class="lg:w-1/6">
+                                <x-sidebar-links />
+                            </div>
+
+                            <div class="lg:flex-1 lg:mx-10" style="max-width: 700px">
+
+                                {{ $slot }}
+
+                            </div>
+
+                            <div class="lg:w-1/6">
+                                <x-friends-list />
+                            </div>
+
+                        </div>
+
+                    </div>
                 </main>
             </section>
         </div>
