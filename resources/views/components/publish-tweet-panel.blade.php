@@ -18,11 +18,14 @@
 
         <footer class="flex justify-between">
 
-            <img src="{{ auth()->user()->avatar }}" alt="" class="rounded-full mr-4">
+            <img src="{{ auth()->user()->avatar }}"
+                alt="avatar"
+                class="rounded-full mr-4"
+                style="width: 50px; height:50px">
 
             <button
                 type="submit"
-                class="bg-blue-500 rounded-lg shadow py-2 px-2 text-white">
+                class="bg-blue-500 rounded-full shadow px-8 font-bold text-sm text-white hover:bg-white hover:text-gray-600">
                 {{ __('Tweet-a-roo')}}
             </button>
 
