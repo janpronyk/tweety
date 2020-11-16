@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FollowsController;
 use App\Http\Controllers\ProfilesController;
 use App\Http\Controllers\TweetController;
 use Illuminate\Support\Facades\Route;
@@ -16,14 +17,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/tweets', [TweetController::class, 'index'])->name('home');
 
     Route::post('/tweets', [TweetController::class, 'store']);
 
+    Route::post('/follow/{user}', [FollowsController::class, 'store'])->name('follow');
+
 });
 
-Route::get('/profiles/{user}', [ProfilesController::class, 'show'])->name('profile');
+Route::get('/profiles/{user:name}', [ProfilesController::class, 'show'])->name('profile');
 
 Route::get('/', function () {
     return view('welcome');
