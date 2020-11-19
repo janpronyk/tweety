@@ -26,7 +26,7 @@ trait Followable
         }
 
           return $this->follow($user);
-          
+
     }
 
     public function following(User $user)

@@ -11,6 +11,7 @@ class FollowsController extends Controller
     public function store(User $user)
     {
 
+        dd('test');
         auth()->user()->toggleFollow($user);
 
         // auth()->user()->follow($user);

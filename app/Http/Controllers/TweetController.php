@@ -26,6 +26,6 @@ class TweetController extends Controller
             'body' => $attributes['body'],
         ]);
 
-        return redirect('/');
+        return back();
     }
 }
