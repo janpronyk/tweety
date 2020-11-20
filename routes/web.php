@@ -22,11 +22,9 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     Route::post('/tweets', [TweetController::class, 'store']);
 
-
-
 });
 
-Route::post('/follow/{user}', [FollowsController::class, 'store'])->name('follow');
+Route::post('/follow/{user:name}', [FollowsController::class, 'store'])->name('follow');
 
 Route::get('/profiles/{user:name}', [ProfilesController::class, 'show'])->name('profile');
 
