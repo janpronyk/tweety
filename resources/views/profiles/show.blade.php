@@ -2,18 +2,24 @@
 
     <header class="mb-4 relative">
 
-        <img
-            src="/images/profile-banner.jpg"
-            alt="banner"
-            class="rounded-3xl mb-4"
-            style="max-height: 280px; width: 100%; object-fit: cover">
+        <div class="relative">
+            <img
+                src="/images/profile-banner.jpg"
+                alt="banner"
+                class="rounded-3xl mb-4"
+                style="max-height: 280px; width: 100%; object-fit: cover">
 
-        <img
-            src="{{ $user->avatar}}"
-            class="rounded-full shadow"
-            style="width:150px; height:150px; object-fit:cover; position:absolute; left: calc(50% - 75px); bottom:10px" alt="">
+            <img
+                src="{{ $user->avatar}}"
+                class="rounded-full shadow absolute bottom-0 transform -translate-x-1/2 translate-y-1/2"
+                style="left: 50%"
+                width="150"
+            >
 
-        <div class="flex justify-between items-center">
+
+        </div>
+
+        <div class="flex justify-between items-center mb-6">
             <div>
                 <h2 class="font-bold text-2xl mb-0">{{ $user->name }}</h2>
                 <p class="text-sm text-gray-500">Joined: {{ $user->created_at->diffForHumans() }}</p>
@@ -24,16 +30,7 @@
 
                 @unless (auth()->user()->name == $user->name)
 
-
-                <form method="POST" action="/follow/{{ $user->name }}">
-                    @csrf
-                    <button
-                        type="submit"
-                        class="bg-blue-500 rounded-full shadow py-2 px-5 text-white text-xs font-bold">
-                        {{ auth()->user()->following($user) ?  __('Unfollow Me') : __('Follow Me')}}
-                    </button>
-
-                </form>
+                <x-follow-button :user="$user" />
 
                 @endunless
 
