@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ExploreController;
 use App\Http\Controllers\FollowsController;
 use App\Http\Controllers\ProfilesController;
 use App\Http\Controllers\TweetController;
@@ -22,11 +23,21 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     Route::post('/tweets', [TweetController::class, 'store']);
 
+    Route::post('/follow/{user:username}', [FollowsController::class, 'store'])->name('follow');
+
+    Route::get('/profiles/{user:username}', [ProfilesController::class, 'show'])->name('profile');
+
+    Route::get('/profiles/{user:username}/edit', [ProfilesController::class, 'edit'])
+        ->name('profile.edit')
+        ->middleware('can:edit,user');
+
+    Route::patch('/profiles/{user:username}', [ProfilesController::class, 'update'])
+        ->name('profile.update')
+        ->middleware('can:edit,user');
+
 });
 
-Route::post('/follow/{user:name}', [FollowsController::class, 'store'])->name('follow');
-
-Route::get('/profiles/{user:name}', [ProfilesController::class, 'show'])->name('profile');
+Route::get('/explore', [ExploreController::class, 'index']);
 
 Route::get('/', function () {
     return view('welcome');

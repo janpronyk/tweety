@@ -1,7 +1,9 @@
 <div class="border border-gray-300 rounded-lg mt-5">
 
-    @foreach ($tweets as $tweet)
+    @forelse ($tweets as $tweet)
         <x-tweet :tweet="$tweet" :loop="$loop" />
-    @endforeach
+    @empty
+        <p class="p-4">{{ __('No tweets yet.')}}</p>
+    @endforelse
 
 </div>

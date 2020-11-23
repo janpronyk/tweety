@@ -26,7 +26,11 @@
             </div>
 
             <div class="flex">
-                <a href="" class="rounded-full border py-2 px-5 text-xs lg:mr-4">{{__('Edit Profile')}}</a>
+                @can('edit', $user)
+
+                <a href="{{$user->path('edit') }}" class="rounded-full border py-2 px-5 text-xs lg:mr-4">{{__('Edit Profile')}}</a>
+
+                @endcan
 
                 @unless (auth()->user()->name == $user->name)
 
