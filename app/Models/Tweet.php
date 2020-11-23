@@ -2,12 +2,14 @@
 
 namespace App\Models;
 
+use App\Traits\Likable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Tweet extends Model
 {
     use HasFactory;
+    use Likable;
 
     protected $guarded = [];
 
@@ -15,4 +17,6 @@ class Tweet extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+
+    
 }
