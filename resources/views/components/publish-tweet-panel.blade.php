@@ -8,7 +8,9 @@
             name="body"
             id="body"
             class="w-full"
-            placeholder="{{__('Whats up doc')}}"></textarea>
+            placeholder="{{__('Whats up doc')}}"
+            autofocus
+            required></textarea>
 
         <hr class="my-4">
 
@@ -16,7 +18,7 @@
         <p class="text-red-500 my-3 text-sm">{{ $message }}</p>
         @enderror
 
-        <footer class="flex justify-between">
+        <footer class="flex justify-between items-center">
 
             <img src="{{ auth()->user()->avatar }}"
                 alt="avatar"
@@ -25,7 +27,7 @@
 
             <button
                 type="submit"
-                class="bg-blue-500 rounded-full shadow px-8 font-bold text-sm text-white hover:bg-white hover:text-gray-600">
+                class="bg-blue-500 rounded-full shadow px-8 py-3 font-bold text-xs text-white hover:bg-blue-700">
                 {{ __('Tweet-a-roo')}}
             </button>
 

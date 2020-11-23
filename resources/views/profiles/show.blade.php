@@ -20,7 +20,7 @@
         </div>
 
         <div class="flex justify-between items-center mb-6">
-            <div>
+            <div style="max-width: 270px;">
                 <h2 class="font-bold text-2xl mb-0">{{ $user->name }}</h2>
                 <p class="text-sm text-gray-500">Joined: {{ $user->created_at->diffForHumans() }}</p>
             </div>
@@ -53,6 +53,6 @@
         expedita culpa! Velit ipsam sit vero. Impedit, quam nisi? Eius ab doloremque eos nesciunt quam cum.
     </p>
 
-    <x-timeline :tweets="$user->tweets" />
+    <x-timeline :tweets="$tweets" />
 
 </x-app-layout>
