@@ -1,4 +1,4 @@
-<form method="POST" action="/follow/{{ $user->name }}">
+<form method="POST" action="/follow/{{ $user->username }}">
     @csrf
     <button
         type="submit"

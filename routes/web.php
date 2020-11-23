@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+
     Route::get('/tweets', [TweetController::class, 'index'])->name('home');
 
     Route::post('/tweets', [TweetController::class, 'store']);
@@ -35,9 +36,10 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         ->name('profile.update')
         ->middleware('can:edit,user');
 
-});
 
-Route::get('/explore', [ExploreController::class, 'index']);
+    Route::get('/explore', [ExploreController::class, 'index']);
+
+});
 
 Route::get('/', function () {
     return view('welcome');
